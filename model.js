@@ -5,10 +5,24 @@ export const addingItem = (item) => {
 
     shoppingList.push({
         id : createId,
-        name : item,
+        item,
         priority : 'normal'
     })
 }
+console.log(shoppingList);
+
+export const setPriority = (itemId, priority) => {
+    shoppingList = shoppingList.map((item) => {
+        if(itemId === item.id){
+            return {
+                ...item,
+                priority,
+            };
+        }
+        return item;
+    })
+}
+console.log(shoppingList);
 
 export const getShoppingList = () => shoppingList;
 

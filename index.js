@@ -1,5 +1,6 @@
 import Item from "./Item.js";
-import {addingItem } from "./model.js";
+import {addingItem, setPriority } from "./model.js";
+import { renderShoppingList } from "./view.js";
 const itemInput = document.querySelector("input[name='itemInput']");
 const shoppingListDiv = document.querySelector('.shopping-list');
 const completedDiv = document.querySelector('.completed');
@@ -17,9 +18,30 @@ itemInput.addEventListener('keyup', function(evt){
         // Add item
        addingItem(evt.target.value);
        console.log(evt.target.value);
+       renderShoppingList();
        evt.target.value ='';
     }
 
     
+});
+
+shoppingListDiv.addEventListener('click', function(evt) {
+
+    if(evt.target.parentElement.classList.contains('priority-control')) {
+      let priority = evt.target.classList.value;
+      let getId = evt.target.parentElement.parentElement.getAttribute('data-id');
+      console.log(getId);
+      console.log(priority);
+
+      setPriority(getId, priority);
+
+      renderShoppingList();
+    }
+
+    if(evt.target.parentElement.classList.contains('remove-btn')) {
+
+
+    }
+   
 })
 // shoppingListDiv.innerHTML += Item('Satitary Pad', 'normal', 1);

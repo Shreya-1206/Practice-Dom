@@ -1,6 +1,6 @@
-const Item = function(title, priority ='normal', id) {
+const Item = function(title, priority ='high', id) {
     return `
-    <div class="item ${priority}" data-id=${id} draggable="true">
+    <div class="item ${priority}" data-id="${id}" draggable="true">
     <div class="task">${title}</div>
     <div class="priority-control">
       <span class="high"></span>
