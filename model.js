@@ -14,11 +14,10 @@ export const addingItem = (item) => {
 console.log(shoppingList);
 
 export const completedItem = (itemId) => {
-    let getItemFromShopping = shoppingList.map(item => item.id === itemId);
-    shoppingList = shoppingList.filter(item => item.id !== itemId);
-
-    completedList = [getItemFromShopping, ...completedList]
-    console.log(completedList)
+    const getItem = shoppingList.find(({ id}) => id === itemId);   /// why not item.id doubt
+    shoppingList = shoppingList.filter(({ id }) => id !== itemId);
+    completedList = [getItem, ...completedList];
+    console.log(completedList);
 }
 
 

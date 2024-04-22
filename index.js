@@ -57,7 +57,7 @@ shoppingListDiv.addEventListener('dragstart', function(evt) {
 });
 
 completedDiv.addEventListener('drop', function(evt) {
-    evt.preventDefault();
+
     let fetchId = evt.dataTransfer.getData('text/plain');
 
     if(fetchId){
