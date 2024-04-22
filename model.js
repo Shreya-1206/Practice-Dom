@@ -1,4 +1,6 @@
 let shoppingList = [];
+let completedList =[];
+
 
 export const addingItem = (item) => {
     const createId = `${parseInt(Math.random()* 100000)} ${new Date().getTime()}`;
@@ -11,6 +13,15 @@ export const addingItem = (item) => {
 }
 console.log(shoppingList);
 
+export const completedItem = (itemId) => {
+    let getItemFromShopping = shoppingList.map(item => item.id === itemId);
+    shoppingList = shoppingList.filter(item => item.id !== itemId);
+
+    completedList = [getItemFromShopping, ...completedList]
+    console.log(completedList)
+}
+
+
 export const setPriority = (itemId, priority) => {
     shoppingList = shoppingList.map((item) => {
         if(itemId === item.id){
@@ -22,7 +33,15 @@ export const setPriority = (itemId, priority) => {
         return item;
     })
 }
-console.log(shoppingList);
+
+export const removeItem = function(itemId){
+    shoppingList = shoppingList.filter((item) => item.id !== itemId);
+
+    return shoppingList;
+}
+export const clearCompleted = () => (completedList= []);
 
 export const getShoppingList = () => shoppingList;
+
+export const getCompletedList = () => completedList;
 
